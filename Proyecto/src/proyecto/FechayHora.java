@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ramie
+ * @author Daniel Solorzano Damaceno
  */
 public class FechayHora {
     public static void Horafecha(){
