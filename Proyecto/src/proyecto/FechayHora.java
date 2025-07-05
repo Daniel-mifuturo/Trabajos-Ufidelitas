@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author Daniel Solorzano Damaceno
  */
 public class FechayHora {
-    public static void Horafecha(){
+    public static void mostrarHorafecha(){
         LocalDateTime fechaHora = LocalDateTime.now(); 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String resultado = fechaHora.format(formato);
