@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Daniel Solorzano Damaceno
+ * @author Grupo 7
  */
 public class FechayHora {
     public static void mostrarHorafecha(){
@@ -18,6 +18,7 @@ public class FechayHora {
         String resultado = fechaHora.format(formato);
         JOptionPane.showMessageDialog(null, "Fecha y hora actual: "+resultado);
     
+        // Referencias para Fecha y hora: https://mkyong.com/java8/java-8-how-to-format-localdatetime/
     
     }
 }
