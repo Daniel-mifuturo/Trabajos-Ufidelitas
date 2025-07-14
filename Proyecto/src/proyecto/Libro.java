@@ -76,6 +76,7 @@ public class Libro {
   
   //Mostrar objeto libro
   
+    @Override
   public String toString(){
     return "ISBN:"+ isbn+ "\n"+
            "Titulo:"+ titulo+ "\n"+
