@@ -69,8 +69,11 @@ public class Libro {
      return isbn.startsWith("978") || isbn.startsWith("979");
   }
   
-  
-  //Mostrar objeto libro
+  //validar el ISBN o titulo para consulta de libros
+  public boolean coincideCon(String opcion){
+      return isbn.equalsIgnoreCase(opcion) || titulo.equalsIgnoreCase(opcion);  
+  }
+   //Mostrar objeto libro
   
     @Override
   public String toString(){

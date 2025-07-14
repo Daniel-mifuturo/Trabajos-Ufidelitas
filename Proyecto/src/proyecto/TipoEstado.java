@@ -9,5 +9,5 @@ package proyecto;
  * @author Grupo 7
  */
 public enum TipoEstado {
-    DISPONIBLE, PRESTADO, RESERVADO, DESCATALOGADO    
+    DISPONIBLE, PRESTADO   
 }
