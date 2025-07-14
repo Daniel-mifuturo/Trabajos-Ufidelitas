@@ -13,15 +13,15 @@ public class Libro {
     private String isbn;
     private String titulo;
     private String autor;
-    private String estado;
+    private TipoEstado estado;
     
     
     //constructor
-    public Libro(String isbn, String titulo, String autor){
+    public Libro(String isbn, String titulo, String autor, TipoEstado estado){
        this.isbn = isbn;
        this.titulo = titulo;
        this.autor = autor;
-       this.estado = "Disponible";
+       this.estado = estado;
     }
        
     //getters
@@ -37,7 +37,7 @@ public class Libro {
          return autor;
        }  
 
-       public String getEstado(){
+       public TipoEstado getEstado(){
          return estado;
        } 
        
@@ -57,12 +57,8 @@ public class Libro {
   }
   
   //Cambiar estado del libro
-  public void setEstado(String estado){
-      if (estado.equalsIgnoreCase("Disponible") || estado.equalsIgnoreCase("Prestado")){
-    this.estado = estado;
-  }else{
-            System.out.println("Estado no valido. Debe ser Disponible o Prestado.");
-      }
+  public void cambiarEstado(TipoEstado Nuevoestado){
+      this.estado=Nuevoestado;
   }
   
   // validar el ISBN
@@ -78,12 +74,10 @@ public class Libro {
   
     @Override
   public String toString(){
+    String estadoLibro = estado.toString().charAt(0)+estado.toString().substring(1).toLowerCase();
     return "ISBN:"+ isbn+ "\n"+
            "Titulo:"+ titulo+ "\n"+
            "Autor:"+ autor+ "\n"+
-           "Estado:"+ estado;
+           "Estado:"+ estadoLibro;
   }
-
-
-
 }

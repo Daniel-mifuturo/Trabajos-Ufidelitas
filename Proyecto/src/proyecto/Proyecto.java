@@ -16,6 +16,7 @@ public class Proyecto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+                        
         int opcionPrincipal;
         do {
             String seleccion = JOptionPane.showInputDialog(
@@ -28,7 +29,7 @@ public class Proyecto {
                 "Seleccione una opción:"
             );
 
-            if (seleccion == null) break; // Usuario cerró el diálogo
+            if (seleccion == null) break; 
 
             opcionPrincipal = Integer.parseInt(seleccion);
 
@@ -56,6 +57,8 @@ public class Proyecto {
     }
 
     public static void administrarLibros() {
+        GestionLibros gestion=new GestionLibros(100);
+        GestionLibros gestione=new GestionLibros(200);
         int opcion;
 
         do {
@@ -74,7 +77,7 @@ public class Proyecto {
 
             switch (opcion) {
                 case 1:
-                    JOptionPane.showMessageDialog(null, "Funcionalidad: Agregar Libro");
+                    gestion.agregarLibro();
                     break;
                 case 2:
                     JOptionPane.showMessageDialog(null, "Funcionalidad: Modificar Libro");
