@@ -20,13 +20,26 @@ public class GestionLibros {
         libros = new Libro[capacidad];
         librosEliminados = new Libro [capacidad];
     }
-    //agregar libros
+    //agregar libros y validacion
     public void agregarLibro (){
+        //validaciones nulas o vacio
         String isbn = JOptionPane.showInputDialog("Ingrese el ISBN del libro:");
+        if (isbn == null || isbn.equals("")){
+            JOptionPane.showMessageDialog(null, "Error: Entrada inválida.");
+            return;
+        }
         if (!Libro.validarIsbn(isbn)){
             JOptionPane.showMessageDialog(null, "Error: ISBN inválido. Debe tener 13 dígitos y comenzar con los números 978 o 979");
             return;
         }
+        //validar si el ISBN ya existe en la lista
+        for (int i=0; i < contadorLibros;i++){
+            if (libros[i]!=null && libros[i].getIsbn().equals(isbn)){
+                JOptionPane.showMessageDialog(null, "Error: ISBN "+isbn+" ya ha sido registrado en la base de datos");
+                return;
+            }
+        }
+        //agregar libro
         String titulo = JOptionPane.showInputDialog("Ingrese el título:");
         String autor = JOptionPane.showInputDialog("Ingrese el autor:");
         TipoEstado estado = TipoEstado.DISPONIBLE;
@@ -78,14 +91,23 @@ public class GestionLibros {
     
     public void cambiarEstadoLibro(){
         String isbn = JOptionPane.showInputDialog("Ingrese el ISBN del libro:");
+        if (isbn == null || isbn.equals("")){
+            JOptionPane.showMessageDialog(null, "Error: Entrada inválida.");
+            return;
+        } 
+        if (!Libro.validarIsbn(isbn)){
+            JOptionPane.showMessageDialog(null, "Error: ISBN inválido. Debe tener 13 dígitos y comenzar con los números 978 o 979");
+            return;
+        }
+               
         for(int i=0;i<contadorLibros;i++){
             if(libros[i]!=null && libros[i].getIsbn().equals(isbn)){
                 String seleccion = JOptionPane.showInputDialog(
                 "Seleccione el nuevo tipo de estado libro:\n"+
                 "1. DISPONIBLE\n"+        
                 "2. PRESTADO\n");
-                if (seleccion == null || !seleccion.matches("[1-4]")){
-                    JOptionPane.showMessageDialog(null, "Error: Entrada inválida. Debe ingresar un número entre 1 y 4");
+                if (seleccion == null || !seleccion.matches("[1-2]")){
+                    JOptionPane.showMessageDialog(null, "Error: Entrada inválida. Debe ingresar un número entre 1 o 2");
                     return;
                 }
                 
@@ -103,7 +125,7 @@ public class GestionLibros {
                 libros[i].cambiarEstado(nuevoEstado);
                 JOptionPane.showMessageDialog(null, "Estado actualizado a:"+nuevoEstado);
             }else{
-               JOptionPane.showMessageDialog(null, "Error: Libro no encontrado"); 
+                JOptionPane.showMessageDialog(null, "Error: Libro no encontrado"); 
             }
         }
     }
@@ -171,11 +193,14 @@ public class GestionLibros {
     }
     
     public void buscarLibro(){
-        String opcion = JOptionPane.showInputDialog(null, "Ingrese el ISBN o título a consultar:");
-        if (opcion == null || opcion.equals(""))return;
-        
+        String isbn = JOptionPane.showInputDialog(null, "Ingrese el ISBN o título a consultar:");
+        if (isbn == null || isbn.equals("")){
+            JOptionPane.showMessageDialog(null, "Error: Entrada inválida.");
+            return;
+        } 
+                
         for (int i=0; i<contadorLibros; i++){
-            if (libros[i]!=null && libros[i].coincideCon(opcion)){
+            if (libros[i]!=null && libros[i].coincideCon(isbn)){
                 JOptionPane.showMessageDialog(null, "Resultados de busqueda: \n\n"+libros[i].toString());
                 return;
             }
