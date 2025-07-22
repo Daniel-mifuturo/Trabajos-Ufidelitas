@@ -14,8 +14,20 @@ public class GestionLibros {
     private Libro[] librosEliminados;
     private int contadorLibros = 0;
     private int contadorEliminados = 0;
-        
     
+    //setters y getters
+    public Libro[] getLibros (){
+        return libros;    
+    }
+        public void setLibros(Libro[]libros){
+        this.libros=libros;
+    }
+    public int getContadorLibros(){
+        return contadorLibros;
+    }
+    public void setContadorLibros(int contadorLibros){
+        this.contadorLibros=contadorLibros;
+    }
     public GestionLibros (int capacidad){
         libros = new Libro[capacidad];
         librosEliminados = new Libro [capacidad];
@@ -207,5 +219,15 @@ public class GestionLibros {
         }
         JOptionPane.showMessageDialog(null, "Error: Libro no encontrado");
     }
+    //Busqueda de libros por ISBN
+    public Libro buscarPorISBN(String isbn){
+         for(int i = 0; i < contadorLibros; i++){
+          if(libros[i]!=null && libros[i].getIsbn().equalsIgnoreCase(isbn)){
+           return libros[i];
+          }
+         }
+         return null;
+       }
+    
 }
 

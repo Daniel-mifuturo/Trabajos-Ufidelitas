@@ -1,0 +1,5 @@
+ISBN9790987654321; Titulo: c Estudiante: daniel Fecha prestamo: 21/07/2025 22:04
+ISBN9780987654321; Titulo: a Estudiante: d Fecha prestamo: 21/07/2025 22:08
+ISBN9780987654321; Titulo: a Fecha prestamo: 21/07/2025 22:08
+ISBN9780987654321; Titulo: a Estudiante: dan Fecha prestamo: 21/07/2025 22:09
+ISBN9791234567890; Titulo: a Estudiante: daniel Fecha prestamo: 21/07/2025 22:47

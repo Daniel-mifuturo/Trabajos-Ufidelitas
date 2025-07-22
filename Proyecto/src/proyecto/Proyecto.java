@@ -16,7 +16,7 @@ public class Proyecto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        GestionLibros gestionLibros=new GestionLibros(2000);
         int opcionPrincipal;
         do {
             String seleccion = JOptionPane.showInputDialog(
@@ -35,13 +35,13 @@ public class Proyecto {
 
             switch (opcionPrincipal) {
                 case 1:
-                    administrarLibros();
+                    administrarLibros(gestionLibros);
                     break;
                 case 2:
-                    prestamosDevoluciones();
+                    prestamosDevoluciones(gestionLibros);
                     break;
                 case 3:
-                    consultarLibros();
+                    consultarLibros(gestionLibros);
                     break;
                 case 4:
                     JOptionPane.showMessageDialog(null, "Funcionalidad = Modulo de Reportes del proyecto en construcción");
@@ -59,8 +59,8 @@ public class Proyecto {
         } while (opcionPrincipal != 6);
     }
 
-    public static void administrarLibros() {
-        GestionLibros gestion=new GestionLibros(2000);
+    public static void administrarLibros(GestionLibros gestionLibros) {
+        
         
         int opcion;
 
@@ -81,19 +81,19 @@ public class Proyecto {
 
             switch (opcion) {
                 case 1:
-                    gestion.agregarLibro();
+                    gestionLibros.agregarLibro();
                     break;
                 case 2:
-                    gestion.consultarLibro();
+                    gestionLibros.consultarLibro();
                     break;
                 case 3:
-                    gestion.eliminarLibro();
+                    gestionLibros.eliminarLibro();
                     break;
                 case 4:
-                    gestion.cambiarEstadoLibro();
+                    gestionLibros.cambiarEstadoLibro();
                     break;
                 case 5:
-                    gestion.visualizarLibros();
+                    gestionLibros.visualizarLibros();
                     break;
                 case 6:
                     JOptionPane.showMessageDialog(null,"Regresar al menu principal");
@@ -105,7 +105,7 @@ public class Proyecto {
         } while (opcion != 6);
     }
 
-    public static void prestamosDevoluciones() {
+    public static void prestamosDevoluciones(GestionLibros gestionLibros){
         int opcion;
     // El almacenamiento de préstamos se debe realizar en archivo *.txt
         do {
@@ -124,16 +124,30 @@ public class Proyecto {
 
             switch (opcion) {
                 case 1:
-                    JOptionPane.showMessageDialog(null, "Funcionalidad: Registrar préstamos");
+                    GestionPrestamos.registrarPrestamo(gestionLibros);
                     break;
                 case 2:
-                    JOptionPane.showMessageDialog(null, "Funcionalidad: Registrar devoluciones");
+                    GestionPrestamos.registrarDevolucion(gestionLibros);
                     break;
                 case 3:
-                    JOptionPane.showMessageDialog(null, "Funcionalidad: Historial de registro de préstamos");
-                    break;
+                    String isbn = JOptionPane.showInputDialog("Ingrese el ISBN a buscar:");
+                    if (isbn == null || isbn.trim().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Debe ingresar un ISBN válido.");
+                    } else if (!Libro.validarIsbn(isbn)) {
+                        JOptionPane.showMessageDialog(null, "Error: ISBN inválido. Debe tener 13 dígitos y comenzar con los números 978 o 979.");
+                    } else {
+                        GestionPrestamos.consultarPrestamosPorISBN("prestamos.txt", isbn);
+                    }
+                     break;
                 case 4:
-                    JOptionPane.showMessageDialog(null, "Funcionalidad: Consultas (Por estudiante, por rango de fechas o por ISBN)");
+                    String estudiante = JOptionPane.showInputDialog("Ingrese el nombre del estudiante:");
+                    if (estudiante == null || estudiante.trim().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Debe ingresar un nombre válido.");
+                    } else if (estudiante.trim().length() < 2) {
+                        JOptionPane.showMessageDialog(null, "El nombre debe tener al menos 2 caracteres.");
+                    } else {
+                        GestionPrestamos.consultarPrestamosPorEstudiante("prestamos.txt", estudiante.trim());
+                    }
                     break;
                 case 5:
                     JOptionPane.showMessageDialog(null,"Regresar al menu principal");
@@ -145,7 +159,7 @@ public class Proyecto {
         } while (opcion != 5);
     }
 
-    public static void consultarLibros() {
+    public static void consultarLibros(GestionLibros gestionLibros) {
         int opcion;
         //Leer arreglos y archivos para generar reportes
         do {

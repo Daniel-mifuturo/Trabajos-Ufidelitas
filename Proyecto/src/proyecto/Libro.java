@@ -56,6 +56,10 @@ public class Libro {
     this.autor = autor;
   }
   
+  public void setEstado(TipoEstado estado) {
+        this.estado = estado;
+    }
+  
   //Cambiar estado del libro
   public void cambiarEstado(TipoEstado Nuevoestado){
       this.estado=Nuevoestado;

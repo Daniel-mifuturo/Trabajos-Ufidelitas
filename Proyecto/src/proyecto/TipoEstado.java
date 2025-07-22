@@ -11,3 +11,4 @@ package proyecto;
 public enum TipoEstado {
     DISPONIBLE, PRESTADO   
 }
+
