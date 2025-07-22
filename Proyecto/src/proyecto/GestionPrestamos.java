@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Grupo7
+ * @author Grupo 7 
  */
 public class GestionPrestamos {
     

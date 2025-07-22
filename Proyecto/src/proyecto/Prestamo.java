@@ -6,7 +6,7 @@ package proyecto;
 
 /**
  *
- * @author ramie
+ * @author Grupo 7
  */
 public class Prestamo {
     private String isbnLibro;

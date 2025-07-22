@@ -23,10 +23,9 @@ public class Proyecto {
                 "--- Menú Principal ---\n" +
                 "1. Administrar Libros\n" +
                 "2. Préstamos y Devoluciones\n" +
-                "3. Consultar\n" +
-                "4. Reportes de Libros\n"+        
-                "5. Ver Fecha y Hora\n" +
-                "6. Salir\n\n" +
+                "3. Reportes\n" +
+                "4. Ver fecha y hora actual\n" +        
+                "5. Salir\n\n" +
                 "Seleccione una opción:" );           
 
             if (seleccion == null) break; 
@@ -44,19 +43,16 @@ public class Proyecto {
                     consultarLibros(gestionLibros);
                     break;
                 case 4:
-                    JOptionPane.showMessageDialog(null, "Funcionalidad = Modulo de Reportes del proyecto en construcción");
-                    break;
-                case 5:
                     FechayHora.mostrarHorafecha();
                     break;
-                case 6:
+                case 5:
                     JOptionPane.showMessageDialog(null, "Gracias por usar el sistema. ¡Hasta luego!");
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opción inválida.");
             }
 
-        } while (opcionPrincipal != 6);
+        } while (opcionPrincipal != 5);
     }
 
     public static void administrarLibros(GestionLibros gestionLibros) {
@@ -68,11 +64,11 @@ public class Proyecto {
             String seleccion = JOptionPane.showInputDialog(
                 "--- Gestión de Libros ---\n" +
                 "1. Agregar libro\n" +
-                "2. Consultar libro por ISBN o título\n" +
+                "2. Consultar libro (Por ISBN o título)\n" +
                 "3. Eliminar libro\n" +
                 "4. Cambiar tipo de estado del libro (Disponible o Prestado)\n"+
                 "5. Visualización de libros (todos, por estado o búsqueda específica)\n" +       
-                "6. Volver al Menú Principal\n\n" +
+                "6. Volver al menú principal\n\n" +
                 "Seleccione una opción:");            
 
             if (seleccion == null) break;
@@ -113,9 +109,9 @@ public class Proyecto {
                 "--- Gestión de Préstamos ---\n"+ 
                 "1. Registrar préstamos\n" +
                 "2. Registrar devoluciones\n" +
-                "3. Historial de registro de préstamos\n" +
-                "4. Consultas (Por estudiante, por rango de fechas o por ISBN)\n"+        
-                "5. Volver al Menú Principal\n\n" +
+                "3. Historial de registro de préstamos (Por ISBN)\n" +
+                "4. Consultas (Por estudiante)\n"+        
+                "5. Volver al menú principal\n\n" +
                 "Seleccione una opción:");            
 
             if (seleccion == null) break;
@@ -166,11 +162,11 @@ public class Proyecto {
             String seleccion = JOptionPane.showInputDialog(
                 "Reportes\n" +
                 "1. Total de libros registrados\n" +
-                "2. Total de libros disponibles y total de libros prestados\n" +
+                "2. Total de libros disponibles o total de libros prestados\n" +
                 "3. Total de préstamos registrados\n" +
                 "4. Total de libros eliminados" +
                 "5. Préstamos por estudiante"+ 
-                "6. Volver al Menú Principal\n\n"+        
+                "6. Volver al menú principal\n\n"+        
                 "Seleccione una opción:");            
 
             if (seleccion == null) break;
